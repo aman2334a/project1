@@ -1,0 +1,153 @@
+
+
+a{
+    text-decoration: none;
+    color: inherit; 
+}
+.is-active{
+    border: 1px solid black;
+}
+.header {
+    margin: 1% 0%;
+    box-shadow: 0px 13px 7px -15px #111;
+
+}
+.header .Links{
+    /* display: flex; */
+    column-gap: 5%;
+    margin: 5% 0;
+
+}
+.services{
+    margin-bottom: 10%;
+    line-height: 3rem;
+    text-align: center;
+}
+.header .Links span
+{
+    font-weight: 600;
+    font-size: 18px;
+
+}
+.services p{
+    /* text-align: center; */
+    /* font-size: 1.25rem; */
+}
+.servicesImages {
+    margin-bottom: 30%;
+    margin-top: 15%;
+}
+.serviceCard {
+    border: 1px solid #dfdcdc;
+    padding: 4% 4%;
+    border-radius: 3%;
+    margin-bottom: 20%;
+    text-align: center;
+}
+.solutionSection{
+    text-align: center;
+}
+.ChooseUsSection {
+    margin: 7% 0%;
+}
+.requestQuote{
+  background-color: #C22731 !important;
+color: #fff;
+text-align: center;
+margin-bottom: 5%;
+}
+.requestQuoteLink{
+    padding: 2%;
+}
+p.text-muted.aboutSection1 {
+    line-height: 2.1;
+    margin-top: 14%;
+}
+li.NavLinkHeading {
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: 13%;
+}
+ul { list-style-type: none; }
+.hmbger {
+    color: #111;
+    /* float: right; */
+    margin-left: 24%;
+    cursor: pointer;
+}
+  
+  @media screen and (max-width: 768px) {
+    .hmbger {
+      color: #111;
+      float: left;
+      margin-right: 10px;
+    }
+  }
+  
+
+
+@media only screen and (max-width: 991px)and (min-width: 10px)   {
+body{
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+    .header{
+        text-align: center;
+    }
+    .header .Links span
+    {
+        padding-top: 2%;
+        /* font-size: 4rem; */
+ 
+    }
+
+
+}
+@media only screen and (max-width: 991px)and (min-width: 10px)   {
+    
+}
+.mainFooter{
+    padding-top: 1%;
+    justify-content: center;
+}
+
+.Links a{
+    text-decoration: none;
+    color: #111;
+}
+.Links a:active{
+    color: #C22731;
+}
+
+
+section {
+    margin: 4% 23px;
+}
+
+button.accordion-button.collapsed {
+    width: 94%;
+    height: 19px;
+    font-size: 12px;
+    float: left;
+    text-align: left;
+}
+
+.progress{
+    height:9px;
+}
+.text-muted{
+font-size: 14px;
+}
+#root{
+    overflow: hidden;
+}
+
+.image-business{
+    width:100%;
+}

@@ -1,0 +1,87 @@
+.header_main {
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+}
+.navbar-nav{
+  flex-direction: row!important;
+  float: right !important;
+}
+.footer-section{
+  color:white;
+  background-color: #C22731 !important;
+}
+
+@media screen and (max-width:767px){
+ul.navbar-nav {
+  display: flex;
+  flex-direction: column !important;
+  width: 100%;
+}
+li.nav-item {
+  display: block;
+  text-align: center;
+}
+}
+
+.App{
+  overflow: hidden !important;
+}
+
+.form {
+  width: 37%;
+    margin: 49px auto;
+    box-shadow: 0 0 17px 0 #230c0c38;
+  padding:25px;
+    gap:10px;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.form input {
+  display: flex;
+
+  border-radius: 5px;
+  flex-direction: column;
+  height: 27px;
+
+  max-width: 552px;
+  width: 100%;
+}
+button{
+  width:25%;
+  border-radius:5%;
+}
+input{
+  display :block;
+  margin:0,auto;
+}
+.form input{
+  width:90%;
+  border: 1px solid black;
+}
+h1{
+  text-align: center;
+}
+.form_header_text{
+  font-size: 20px;
+  text-align:center;
+}
+.form_input{
+  width:60%;
+  margin: 49px auto;
+    box-shadow: 0 0 17px 0 #230c0c38;
+    border-radius:5px;
+  padding:25px;
+    gap:10px;
+    display: flex;
+    flex-direction: column;
+}
+.form_input{
+  border-radius:5%;
+}
+
+#business{
+  width:87%;
+}
