@@ -1,10 +1,42 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React,{useEffect, useState} from 'react'
+import { NavLink ,useNavigate} from 'react-router-dom'
+import {adminLogin} from '../../Services/adminServices/service'
 export default function LoginTemplate() {
+  const [data, setData] = useState({
+    email:'',
+    password:''
+  })
+  const navigate = useNavigate();
+  const changeData=(key,value)=>{
+    let tmp={...data}
+    tmp[key]=value
+    setData(tmp)
+  }
+
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    console.log(data)
+    adminLogin(data)
+    .then(function (response) {
+      console.log(response.data);
+      let token=response.data.token
+      localStorage.setItem("Token",token)
+      navigate('/admin/reports')
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+  useEffect(()=>{
+    let token=localStorage.getItem('Token')
+    if(token){
+      navigate('/admin/reports')
+    }
+  })
   return (
       <div className='container'>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form_input">
             <div className='row'>
               <div className='col-md-12 text-center'>
@@ -12,13 +44,13 @@ export default function LoginTemplate() {
               </div>
             </div>
             <label>Email</label>
-            <input type="text" />
+            <input type="email"  value={data.email} onChange={(e)=>changeData('email',e.target.value)}   />
 
 
             <label>Password</label>
 
 
-            <input type="password" />
+            <input type="password" value={data.password} onChange={(e)=>changeData('password',e.target.value)}/>
             <button className="btn btn-dark">
               <b>Login</b>
             </button>
