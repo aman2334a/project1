@@ -5,11 +5,11 @@ export default function ServiceTemplate(){
       <section>
         <div className="container">
           <div className="row">
-            <div className="col-lg-4 mb-5 mb-lg-0 text-center">
+            <div className="col-lg-6 mb-5 mb-lg-0 text-center">
               <h2 className="heading-text">Find the best services and consulting for affordable deals.</h2>
               <p>Become a member and avail our premium services in affordable price. We have designed our membership plans which are the best fit to your Finance, Taxation and Investments services.</p>
             </div>
-            <div className="col-lg-4 mb-5 mb-lg-0 text-center">
+            <div className="col-lg-6 mb-5 mb-lg-0 text-center">
               <img src ="./assets/img/services/business-1.jpg"></img>
             </div>
           </div>

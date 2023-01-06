@@ -79,7 +79,7 @@ h1{
     flex-direction: column;
 }
 .form_input{
-  border-radius:5%;
+  border-radius:15px;
 }
 
 #business{

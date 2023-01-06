@@ -1,9 +1,10 @@
 import React from 'react'
 import './table.css'
 export default function Table({ column, data,tableHeading }) {
+    console.log(data)
     return (
         <div className='container'>
-            <h2>{tableHeading}</h2>
+            <h4>{tableHeading}</h4>
             <div className='mainTable'>
                 <table>
                     <thead>
@@ -13,13 +14,14 @@ export default function Table({ column, data,tableHeading }) {
                                     {columnItem.name}
                                 </th>
                             })}
-                            {/* <th>Company</th>
-                            <th>Contact</th>
-                            <th>Country</th> */}
+                           
                         </tr>
                     </thead>
-                    {!data ?
+                    {data?.length>0 ?
                         <tbody>
+                            {
+                                
+                            }
                         </tbody>
                         :
                         <div className='noRecord'>
