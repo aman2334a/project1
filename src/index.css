@@ -85,3 +85,60 @@ h1{
 #business{
   width:87%;
 }
+.form-section {
+  border: 1px solid black;
+  padding: 23px;
+}
+
+
+
+a.btn.btn-primary.btn-pill:hover {
+  background-color: darkmagenta;
+}
+
+.enterprise-box {
+  background: #fff;
+  box-shadow: 0px -1px 20px #e5e5e5;
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+  top: -80px;
+}
+.match-img{
+  max-width: 100%;
+  height: auto;
+  width:80px;
+}
+.servicesImages {
+  padding: 2em 0px;
+}
+.serviceCard h4 {
+  font-weight: bold;
+  font-size: 22px;
+}
+.box_text {
+  font-size: 22px;
+  text-align: center;
+}
+.resource-box h1 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  color: var(--grey-70);
+}
+.resource_text{
+  text-align: center;
+}
+h4{
+  font-size: 22px;
+  font-weight:bold;
+}
+.requestQuote{
+
+    background: linear-gradient(rgba(2, 2, 2, 0.7), rgba(0, 0, 0, 0.7)),  fixed center center;
+    background-size: cover;
+    padding: 80px 0;
+}
+.quote_text{
+  text-decoration:underline;
+}

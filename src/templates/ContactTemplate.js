@@ -40,20 +40,20 @@ export default function ContactTemplate() {
 							<div class="contact-form">
 								<form id="contact-form" role="form" novalidate="novalidate">
 									<div class="form-group has-feedback">
-										<label for="name">Name*</label>
+										<label htmlFor="name">Name*</label>
 										<input type="text" class="form-control" id="name" name="name" placeholder=""></input></div>
 									<div class="form-group has-feedback">
-										<label for="email">Email*</label>
+										<label htmlFor="email">Email*</label>
 										<input type="email" class="form-control" id="email" name="email" placeholder="" />
 
 									</div>
 									<div class="form-group has-feedback">
-										<label for="subject">Subject*</label>
+										<label htmlFor="subject">Subject*</label>
 										<input type="text" class="form-control" id="subject" name="subject" placeholder="" />
 
 									</div>
 									<div class="form-group has-feedback">
-										<label for="message">Message*</label>
+										<label htmlFor="message">Message*</label>
 										<textarea class="form-control" rows="6" id="message" name="message"
 											placeholder=""></textarea>
 

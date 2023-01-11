@@ -1,7 +1,7 @@
 import React from 'react'
 import './table.css'
 export default function Table({ column, data,tableHeading }) {
-    console.log(data)
+    console.log(data,column)
     return (
         <div className='container'>
             <h4>{tableHeading}</h4>
@@ -19,9 +19,17 @@ export default function Table({ column, data,tableHeading }) {
                     </thead>
                     {data?.length>0 ?
                         <tbody>
-                            {
+                            {column?.map((columnItem, columnIndex)=>{
+                                return <tr>
+                                {data?.map((dataItem,dataIndex)=>{
+                                    return<td>
+                                    {dataItem}
+                                    </td>
+                                })}
                                 
-                            }
+                                </tr>
+
+                            })}
                         </tbody>
                         :
                         <div className='noRecord'>

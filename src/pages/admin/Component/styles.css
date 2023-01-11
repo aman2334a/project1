@@ -85,11 +85,16 @@ body {
   padding-top: 15px;
   width: 15%;
 }
+.btnDiv {
+  display: flex;
+  gap: 7%;
+}
 
 .mainShrink {
   transition: margin-left 0.5s;
   padding: 16px;
   background: #fff;
+  overflow-y: scroll;
   height: 100vh;
   display: block;
   margin-left: 15%;

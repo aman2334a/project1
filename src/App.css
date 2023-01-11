@@ -34,8 +34,8 @@ a{
     /* font-size: 1.25rem; */
 }
 .servicesImages {
-    margin-bottom: 30%;
-    margin-top: 15%;
+    /* margin-bottom: 30%;
+    margin-top: 15%; */
 }
 .servicesImages img{
     width:80px
@@ -58,13 +58,13 @@ a{
     text-align: center;
 }
 .ChooseUsSection {
-    margin: 7% 0%;
+    /* margin: 7% 0%; */
 }
 .requestQuote{
     background: linear-gradient(105deg,#6e99e6 ,#C22731);
 color: #fff;
 text-align: center;
-margin-bottom: 5%;
+/* margin-bottom: 5%; */
 }
 .requestQuoteLink{
     padding: 2%;
@@ -137,7 +137,7 @@ body{
 
 
 section {
-    padding: 4% 23px;
+    padding: 4em 0px;
 }
 
 button.accordion-button.collapsed {
@@ -154,6 +154,12 @@ button.accordion-button.collapsed {
 .text-muted{
 font-size: 14px;
 }
+.muted_text{
+    word-break: keep-all;
+}
+.serviceCard{
+    min-height: 325px;;
+}
 #root{
     overflow: hidden;
 }
@@ -161,3 +167,14 @@ font-size: 14px;
 .image-business{
     width:100%;
 }
+.btn.btn-primary.btn-lg.request-btn {
+    border: 1px solid #fff;
+    background: transparent;
+    width: 65%;
+    padding: 12px;
+  }
+
+  .btn.btn-primary.btn-lg.request-btn:hover{
+    background-color: red;
+    color: #fff;
+  }
