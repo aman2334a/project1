@@ -6,27 +6,32 @@ import About from "./pages/About"
 import Membership from './pages/Membership'
 import Service from './pages/Service'
 import Login from './pages/Login';
-import AdminLogin from'./pages/admin/Login'
-import AdminDashboard from'./pages/admin/Dashboard'
+import AdminLogin from './pages/admin/Login'
+import AdminDashboard from './pages/admin/Dashboard'
 import Manage from './pages/admin/Manage';
 import Update from './pages/admin/Update';
 import Signup from './pages/Signup';
+import { ToastProvider } from "react-toast-notifications";
+
 function App() {
   return (
     <div>
-      <Routes>
-        <Route index path="/" element={<Home />} />
-        <Route  index path="/about" element={<About />} />
-        <Route  index path="/contact" element={<Contact />} />
-        <Route  index path="/membership" element={<Membership />} />
-        <Route  index path="/services" element={<Service />} />
-        <Route  index path="/login" element={<Login />} />
-        <Route  index path="/signup" element={<Signup />} />
-        <Route  index path="/admin" element={<AdminLogin />} />
-        <Route  index path="/admin/reports" element={<AdminDashboard />} />
-        <Route  index path="/admin/updates" element={<Update />} />
-        <Route  index path="/admin/manage" element={<Manage />} />
-      </Routes>
+      <ToastProvider autoDismiss={true} autoDismissTimeout="2000">
+
+        <Routes>
+          <Route index path="/" element={<Home />} />
+          <Route index path="/about" element={<About />} />
+          <Route index path="/contact" element={<Contact />} />
+          <Route index path="/membership" element={<Membership />} />
+          <Route index path="/services" element={<Service />} />
+          <Route index path="/login" element={<Login />} />
+          <Route index path="/signup" element={<Signup />} />
+          <Route index path="/admin" element={<AdminLogin />} />
+          <Route index path="/admin/reports" element={<AdminDashboard />} />
+          <Route index path="/admin/updates" element={<Update />} />
+          <Route index path="/admin/manage" element={<Manage />} />
+        </Routes>
+      </ToastProvider>
     </div>
   );
 }

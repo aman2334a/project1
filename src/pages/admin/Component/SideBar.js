@@ -6,7 +6,9 @@ import { NavLink } from "react-router-dom";
 
 import "./styles.css";
 
+
 class Sidebar extends React.Component {
+  
   state = {
     open: window.matchMedia("(min-width: 1024px)").matches || false
   };
