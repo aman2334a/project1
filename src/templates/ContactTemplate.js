@@ -54,7 +54,7 @@ export default function ContactTemplate() {
 									</div>
 									<div class="form-group has-feedback">
 										<label htmlFor="message">Message*</label>
-										<textarea class="form-control" rows="6" id="message" name="message"
+										<textarea class="form-control" rows="2" id="message" name="message"
 											placeholder=""></textarea>
 
 									</div>

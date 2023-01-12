@@ -55,7 +55,8 @@ class Sidebar extends React.Component {
                 <ul>
                   <li><NavLink to="/admin/updates?view=AddScheme">Add Schemes</NavLink></li>
                   <li><NavLink to="/admin/updates?view=HotOffer">Hot Offer</NavLink></li>
-                  <li><NavLink to="/admin/updates?view=NewServices">New services</NavLink></li>
+                  {/* <li><NavLink to="/admin/updates?view=NewServices">New services</NavLink></li> */}
+                  <li><NavLink to="/admin/updates?view=ServiceCategory">Services Category </NavLink></li>
                 </ul>
               </li>
               <li className="NavLinkHeading">Admin

@@ -2,105 +2,195 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Accordion from "react-bootstrap/Accordion";
-// import Switch from "@mui/material/Switch";
+import Switch from "react-switch";
+import { userSignUp, } from "../Services/userServices/service";
+import { useToasts } from "react-toast-notifications";
+import { useNavigate } from "react-router-dom";
+
 
 // const label = { inputProps: { "aria-label": "Switch demo" } };
 function Signup() {
-  const [showInput,setshowInput] = useState(false);
-  const handleToggle = () => {
-      setshowInput(!showInput)
-  };
+    const navigate = useNavigate();
 
-  return (
-   
-    <>
-      <Header />
-      <form>
-        <div className="form input">
-          <h1 className=" form_header_text">
-            Create your GST Accounting Account
-          </h1>
-          <div className="row">
-            <p className="signup-text text-center">
-              To do invoicing Acoounting and process your GST Returns
-              <p className="signup-text text-center">
-                Try free for 365days|no Credit Card needed|Monthly plan under Rs
-                125
-              </p>
-            </p>
-          </div>
-          <label htmlFor="business">Business Country</label>
-          <select name="business" id="business">
-            <option value="Please Select">Please Select</option>
-            <option>India</option>
-            <option>Australia</option>
-            <option>United States</option>
-            <option>United Kingdom</option>
-          </select>
-          <label>Name</label>
-          <input type="text" />
-          <label>Password</label>
-          <input type="password" />
-          <label>Email</label>
-          <input type="email" />
-          <label>Mobile</label>
-          <input type="number" />
-          <label>Business Name</label>
-          <input type="text" />
-          <label htmlFor="businessname">
-            Type<span className="mandatory-field">*</span>
-          </label>
-          <Accordion>
-            <Accordion.Item eventKey="0">
-              <Accordion.Header> Individual</Accordion.Header>
-              <Accordion.Body>
-              <div className="text_content">
-                    <input type="checkbox"/>Individual
-                </div>
+    const { addToast } = useToasts();
+    const [showInput, setshowInput] = useState(false);
+    const [inputData, setInputData] = useState({
+        name:'',
+        email:'',
+        password:'',
+        country:'',
+        mobile:'',
+        businessName:'',
+        type:'',
+        gstNumber:'',
+        referalCode:'',
+    })
+    const handleChange=(key,value)=>{
+        console.log(key,value)
+        let tmp={...inputData}
+        tmp[key]=value
+        setInputData({...tmp})
+    }
+    const handleToggle = () => {
+        setshowInput(!showInput)
+    };
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+        userSignUp(inputData)
+        .then(function (response) {
+            console.log(response.data);
+            addToast("Successfully register!", { appearance: "success" })
+            navigate('/login')
+          })
+          .catch(function (error) {
+            console.log(error);
+            addToast("Something went wrong!", { appearance: "error" })
+          });
+        console.log(inputData)
+    }
 
-                  
-               
 
-              </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="1">
-              <Accordion.Header>Corporate</Accordion.Header>
-              <Accordion.Body>
-               
-              </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="2">
-              <Accordion.Header>Others</Accordion.Header>
-              <Accordion.Body></Accordion.Body>
-            </Accordion.Item>
-          </Accordion>
-          <div className="input_show">
-          {/* <Switch value ={showInput} onClick={handleToggle} >
 
-            
-          </Switch>GST Registered */}
-          </div>
+    return (
 
-          {showInput?
-          <>
-          <label htmlFor="gst_number">GST Number</label>
-            <input />
-          </>:
-          <>
-            
-          </>
-          }
-          
-          <label>Referal code</label>
-          <input type="text" />
-          <button className="btn btn-dark">
-            <b>Create Account</b>
-          </button>
-        </div>
-      </form>
-      <Footer />
-    </>
-  );
+        <>
+            <Header />
+            <div className="container">
+                <form onSubmit={handleSubmit}>
+                    <div className="form_input">
+                        <h1 className=" form_header_text">
+                            Create your GST Accounting Account
+                        </h1>
+                        <div className="row">
+                            <p className="signup-text text-center">
+                                To do invoicing Acoounting and process your GST Returns
+                                <p className="signup-text text-center">
+                                    Try free for 365days|no Credit Card needed|Monthly plan under Rs
+                                    125
+                                </p>
+                            </p>
+                        </div>
+                        <label htmlFor="business">Business Country</label>
+                        <select name="business" id="business" className="form-control"
+                        onChange={(e)=>handleChange("country",e.target.value)}
+                        >
+                            <option  disabled value="Please Select">Please Select</option>
+                            <option value="india">India</option>
+                            <option value="Australia">Australia</option>
+                            <option value="United States">United States</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                        </select>
+                        <label>Name</label>
+                        <input type="text" className="form-control" value={inputData.name} onChange={(e)=>handleChange('name',e.target.value)}/>
+                        <label>Password</label>
+                        <input type="password" className="form-control" value={inputData.password} onChange={(e)=>handleChange('password',e.target.value)}/>
+                        <label>Email</label>
+                        <input type="email" className="form-control"  value={inputData.email} onChange={(e)=>handleChange('email',e.target.value)}/>
+                        <label>Mobile</label>
+                        <input type="number" className="form-control" value={inputData.mobile} onChange={(e)=>handleChange('mobile',e.target.value)}/>
+                        <label>Business Name</label>
+                        <input type="text" className="form-control" value={inputData.businessName} onChange={(e)=>handleChange('businessName',e.target.value)}/>
+                        <label htmlFor="businessname">
+                            Type<span className="mandatory-field">*</span>
+                        </label>
+                        <Accordion>
+                            <Accordion.Item >
+                                <Accordion.Header> Individual</Accordion.Header>
+                                <Accordion.Body>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="individual"  
+                                        onChange={(e)=>handleChange('type',e.target.value)}
+                                        value="option 1"
+                                        />
+                                        <label class="form-check-label" >
+                                            option 1
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="individual"  
+                                        onChange={(e)=>handleChange('type',e.target.value)}
+                                        value="option 2"
+                                        />
+                                        <label class="form-check-label" >
+                                            option 1
+                                        </label>
+                                    </div>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                            <Accordion.Item eventKey="1">
+                                <Accordion.Header>Corporate</Accordion.Header>
+                                <Accordion.Body>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="individual"  
+                                        onChange={(e)=>handleChange('type',e.target.value)}
+                                        value="option 3"
+                                        />
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            option 2
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="individual"  
+                                        onChange={(e)=>handleChange('type',e.target.value)}
+                                        value="option 3"
+                                        />
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            option 3
+                                        </label>
+                                    </div>
+
+                                </Accordion.Body>
+                            </Accordion.Item>
+                            <Accordion.Item eventKey="2">
+                                <Accordion.Header>Others</Accordion.Header>
+                                <Accordion.Body>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="individual"  
+                                        onChange={(e)=>handleChange('type',e.target.value)}
+                                        value="option 4"
+                                        />
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            option 4
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="individual"  
+                                        onChange={(e)=>handleChange('type',e.target.value)}
+                                        value="option 5"
+                                        />
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            option 5
+                                        </label>
+                                    </div>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Accordion>
+                        <div className="input_show">
+                            <Switch checked ={showInput} onChange={handleToggle} />GST Registered
+                        </div>
+
+                        {showInput ?
+                            <>
+                                <label htmlFor="gst_number">GST Number</label>
+                                <input  value={inputData.gstNumber} onChange={(e)=>handleChange('gstNumber',e.target.value)}/>
+                            </> :
+                            <>
+
+                            </>
+                        }
+
+                        <label>Referal code</label>
+                        <input type="text" value={inputData.referalCode}  onChange={(e)=>handleChange('referalCode',e.target.value)}/>
+                        <button className="btn btn-dark">
+                            <b>Create Account</b>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <Footer />
+        </>
+    );
 }
 
 export default Signup;

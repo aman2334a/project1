@@ -1,34 +1,58 @@
-import React from 'react'
-import Table from '../Component/Table'
+import React,{useState} from 'react'
+// import Table from '../Component/Table'
+import { Table,Button } from 'antd'
 
 export default function ServiceWise() {
-  const columnData = [
+  const [tableData, setTableData] = useState([])
+  const columns = [
     {
-      name: 'Request Number',
+      title: 'Request Number',
+      dataIndex: 'name',
+      key: 'name',
     },
     {
-      name: 'Request Date',
+      title: 'Request Date',
+      dataIndex: 'name',
+      key: 'name',
     },
     {
-      name: 'Service Category',
+      title: 'Service Category',
+      dataIndex: 'name',
+      key: 'name',
     },
     {
-      name: 'Appointment time',
+      title: 'Appointment time',
+      dataIndex: 'name',
+      key: 'name',
     },
     {
-      name: 'Customer id',
+      title: 'Customer id',
+      dataIndex: 'name',
+      key: 'name',
     },
     {
-      name: 'Customer Name',
+      title: 'Customer Name',
+      dataIndex: 'name',
+      key: 'name',
     },
     {
-      name: 'reason',
+      title: 'Reason',
+      dataIndex: 'name',
+      key: 'name',
     },
     {
-      name: 'Contact number',
+      title: 'Contact number',
+      dataIndex: 'name',
+      key: 'name',
     },
     {
-      name: 'Update Ticket',
+      title: 'Update Ticket',
+      key: 'action',
+      render: (_, record) => (
+        <div className='btnDiv'>
+          <Button >Update Ticket</Button>
+        </div>
+      ),
     },
   ]
   const data = [
@@ -36,33 +60,33 @@ export default function ServiceWise() {
   ]
   return (
     <div className=''>
-      {/* <h2>Customer Reports</h2> */}
+      {/* <h3>Customer Reports</h3> */}
       <div className='container '>
+        <h5>New Service Request</h5>
         <Table
-          tableHeading={'New Service Request'}
-          column={columnData}
-          data={data}
+          columns={columns}
+          dataSource={tableData}
         />
       </div>
       <div className='container tableContainer'>
+        <h5>In Progress Service Requests</h5>
         <Table
-          tableHeading={'In Progress Service Requests'}
-          column={columnData}
-          data={data}
+           columns={columns}
+           dataSource={tableData}
         />
       </div>
       <div className='container tableContainer'>
+        <h5>Ready To Close Service Requests</h5>
         <Table
-          tableHeading={'Ready To Close Service Requests'}
-          column={columnData}
-          data={data}
+         columns={columns}
+         dataSource={tableData}
         />
       </div>
       <div className='container tableContainer'>
+        <h5>No Record Close Service Requests</h5>
         <Table
-          tableHeading={'Close Service Requests'}
-          column={columnData}
-          data={data}
+          columns={columns}
+          dataSource={tableData}
         />
       </div>
     </div>

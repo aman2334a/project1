@@ -11,6 +11,7 @@ import AdminDashboard from './pages/admin/Dashboard'
 import Manage from './pages/admin/Manage';
 import Update from './pages/admin/Update';
 import Signup from './pages/Signup';
+import Dashboard from './pages/user/Dashboard';
 import { ToastProvider } from "react-toast-notifications";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route index path="/admin/reports" element={<AdminDashboard />} />
           <Route index path="/admin/updates" element={<Update />} />
           <Route index path="/admin/manage" element={<Manage />} />
+           <Route index path="/user" element={<Dashboard />} />
         </Routes>
       </ToastProvider>
     </div>
