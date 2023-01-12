@@ -45,7 +45,7 @@ body {
 }
 /******/
 .bodyWrap {
-  margin-top: 63px;
+  /* margin-top: 63px; */
   position: relative;
   z-index: 100;
 }
@@ -97,6 +97,7 @@ body {
   overflow-y: scroll;
   height: 100vh;
   display: block;
+  padding-top: 5%;
   margin-left: 15%;
 }
 
@@ -120,6 +121,7 @@ body {
   padding: 16px;
   background: #fff;
   height: 100vh;
+  padding-top: 1%;
   overflow: scroll;
   display: block;
 }
