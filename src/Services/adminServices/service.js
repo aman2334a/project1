@@ -184,8 +184,40 @@ export const deleteCategory = (id) => {
   };
 
   return axios(config)
-   
 
+
+}
+
+export const getAllServiceRequests = () => {
+
+  var config = {
+    method: 'get',
+    url: baseUrl + 'admin/serviceRequest',
+
+  };
+
+  return axios(config)
+    
+
+}
+
+export const  getAllUser=()=>{
+  var config = {
+    method: 'get',
+    url: baseUrl+'admin/user',
+  };
+  
+  return axios(config)
+ 
+}
+export const  getAllTransaction=()=>{
+  var config = {
+    method: 'get',
+    url: baseUrl+'admin/transactions',
+  };
+  
+  return axios(config)
+ 
 }
 
 

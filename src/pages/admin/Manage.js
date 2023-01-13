@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import Sidebar from './Component/SideBar'
 import { useSearchParams } from 'react-router-dom'
+import AdminLayout from '../../templates/admin/Component/AdminLayout.tsx'
+
 
 import Payment from '../../templates/admin/manage/Payment'
 import UserManage from '../../templates/admin/manage/UserManage'
@@ -18,9 +20,13 @@ export default function Manage() {
   }, [searchParams])
   return (
     <div>
-      <Sidebar 
-      element={viewPage==0?<Payment />:<UserManage/>}
+      <AdminLayout
+       element={viewPage==0?<Payment />:<UserManage/>}
+       title="Manage"
       />
+      {/* <Sidebar 
+      element={viewPage==0?<Payment />:<UserManage/>}
+      /> */}
     </div>
   )
 }

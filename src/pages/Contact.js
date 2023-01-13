@@ -4,7 +4,7 @@ import Header  from '../components/Header'
  import ContactTemplate from '../templates/ContactTemplate'
 export default function Contact() {
   return (
-    <div>
+    <div className='static'>
       <Header />
       <ContactTemplate/>
       <Footer />

@@ -40,14 +40,14 @@ li.nav-item {
 }
 
 .form input {
-  display: flex;
+  /* display: flex;
 
   border-radius: 5px;
   flex-direction: column;
   height: 27px;
 
   max-width: 552px;
-  width: 100%;
+  width: 100%; */
 }
 button{
   width:25%;
@@ -82,12 +82,13 @@ h1{
   border-radius:15px;
 }
 
-#business{
+/* #business{
   width:87%;
-}
+} */
 .form-section {
-  border: 1px solid black;
-  padding: 23px;
+  border: 1px solid #b9b8b8;
+  padding: 1.5%;
+  border-radius: 5px;
 }
 
 
@@ -141,4 +142,12 @@ h4{
 }
 .quote_text{
   text-decoration:underline;
+}
+.btnDiv button{
+  width: 100% !important;
+}
+.adminAddFrom{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
 }

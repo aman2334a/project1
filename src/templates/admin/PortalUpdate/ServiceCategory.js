@@ -2,8 +2,10 @@
 import React, { useEffect, useState } from 'react'
 import { Col, Row, Button, Table, Modal } from 'antd';
 import { Form, Input, Radio } from 'antd';
+
 import { getAllCategory, addCategory, getCategoryById, updateCategory, deleteCategory } from '../../../Services/adminServices/service';
 import { useToasts } from "react-toast-notifications";
+import SubCategory from './Component/SubCategory';
 export default function ServiceCategory() {
   const { addToast } = useToasts();
   const [form] = Form.useForm();
@@ -12,6 +14,7 @@ export default function ServiceCategory() {
     name: '',
     desc: ''
   })
+  const [option, setOption] = useState([{ name: 'Option 1️⃣', id: 1 }, { name: 'Option 2️⃣', id: 2 }])
   const [reloadApiData, setReloadApiData] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -114,6 +117,7 @@ export default function ServiceCategory() {
       });
   }, [reloadApiData])
 
+
   return (
     <div>
       <div className='container '>
@@ -143,6 +147,16 @@ export default function ServiceCategory() {
 
 
             </div>
+            {/* <div className='feedback'>
+            <label htmlFor="message">Select Sub-category</label>
+            <SubCategory
+            option={option} // Options to display in the dropdown
+            // selectedValues={this.state.selectedValue} // Preselected value to persist in dropdown
+            onSelect={onSelect} // Function will trigger on select event
+            onRemove={onRemove} // Function will trigger on remove event
+            displayValue="name"
+            />
+            </div> */}
             <button className='btn btn-primary' >Submit</button>
           </form>
         </div>

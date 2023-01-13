@@ -4,7 +4,7 @@ import Footer from '../components/Footer'
 import AboutTemplate from '../templates/AboutTemplate'
 export default function About() {
   return (
-    <div>
+    <div className='static'>
       <Header />
       <AboutTemplate />
       <Footer />

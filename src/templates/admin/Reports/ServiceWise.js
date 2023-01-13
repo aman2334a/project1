@@ -1,23 +1,32 @@
-import React,{useState} from 'react'
+import React, { useState,useEffect } from 'react'
 // import Table from '../Component/Table'
-import { Table,Button } from 'antd'
+import { Table, Button } from 'antd'
+import moment from 'moment'
+
+import { getAllServiceRequests } from '../../../Services/adminServices/service'
 
 export default function ServiceWise() {
   const [tableData, setTableData] = useState([])
   const columns = [
     {
       title: 'Request Number',
-      dataIndex: 'name',
-      key: 'name',
+      dataIndex: '_id',
+      key: 'createdAt',
     },
     {
       title: 'Request Date',
-      dataIndex: 'name',
-      key: 'name',
+      dataIndex: 'createdAt',
+      key: 'createdAt',
+      render: (_, record) => (
+        
+        <>
+        {console.log("flow1",record.createdAt)}
+        {moment(record.createdAt).format('DD/MM/YYYY')}</>
+      ),
     },
     {
       title: 'Service Category',
-      dataIndex: 'name',
+      dataIndex: ['serviceCategoryId','name'],
       key: 'name',
     },
     {
@@ -27,22 +36,22 @@ export default function ServiceWise() {
     },
     {
       title: 'Customer id',
-      dataIndex: 'name',
+      dataIndex: ['userId','_id'],
       key: 'name',
     },
     {
       title: 'Customer Name',
-      dataIndex: 'name',
+      dataIndex: ['userId','name'],
       key: 'name',
     },
     {
       title: 'Reason',
-      dataIndex: 'name',
+      dataIndex: 'reason',
       key: 'name',
     },
     {
       title: 'Contact number',
-      dataIndex: 'name',
+      dataIndex: ['userId','mobile'],
       key: 'name',
     },
     {
@@ -58,6 +67,19 @@ export default function ServiceWise() {
   const data = [
 
   ]
+  useEffect(() => {
+    getAllServiceRequests()
+    .then(function (response) {
+      console.log(response.data);
+      let tmp=response.data.data
+      setTableData([...tmp])
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  }, [])
+
   return (
     <div className=''>
       {/* <h3>Customer Reports</h3> */}
@@ -71,19 +93,19 @@ export default function ServiceWise() {
       <div className='container tableContainer'>
         <h5>In Progress Service Requests</h5>
         <Table
-           columns={columns}
-           dataSource={tableData}
+          columns={columns}
+          dataSource={tableData}
         />
       </div>
       <div className='container tableContainer'>
         <h5>Ready To Close Service Requests</h5>
         <Table
-         columns={columns}
-         dataSource={tableData}
+          columns={columns}
+          dataSource={tableData}
         />
       </div>
       <div className='container tableContainer'>
-        <h5>No Record Close Service Requests</h5>
+        <h5>Close Service Requests</h5>
         <Table
           columns={columns}
           dataSource={tableData}

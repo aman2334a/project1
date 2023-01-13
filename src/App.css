@@ -1,7 +1,10 @@
 
+th.ant-table-cell {
+    background-color: aquamarine;
+  }
 
 a{
-    text-decoration: none;
+    text-decoration: none !important;
     color: inherit; 
 }
 .is-active{
@@ -136,16 +139,16 @@ body{
 }
 
 
-section {
+.static section {
     padding: 4em 0px;
 }
 
 button.accordion-button.collapsed {
-    width: 94%;
+    /* width: 94%;
     height: 19px;
     font-size: 12px;
     float: left;
-    text-align: left;
+    text-align: left; */
 }
 
 .progress{
@@ -178,3 +181,41 @@ font-size: 14px;
     background-color: red;
     color: #fff;
   }
+
+  .selectediv {
+    border: 2px solid #bb1414 !important;
+}
+.subCategoryShow {
+    display: flex;
+    gap: 1%;
+}
+span.subCategoryArray {
+    display: flex;
+    gap: 2%;
+    border: 1px solid black;
+    justify-content: center;
+    padding: 0.5%;
+    border-radius: 6px;
+}
+.removeSubCategory{
+    cursor: pointer;
+}
+form.userRequestForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.MainDiv {
+    overflow-x: scroll;
+}
+.dashBoardLogo{
+    padding-left: 2.5%;
+}
+.adminHeader {
+    display: flex;
+    justify-content: space-between;
+}
+span.logoutBtn {
+    padding-right: 3%;
+    cursor: pointer;
+}

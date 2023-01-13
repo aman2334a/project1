@@ -47,3 +47,27 @@ export const  getUserProfile=()=>{
      return axios(config)
       
 }
+
+export const getAllServiceCategory=()=>{
+    var config = {
+        method: 'get',
+        url: baseUrl+'services',
+       
+      };
+      
+      return axios(config)
+      
+}
+
+export const createRequestAPi=(data)=>{
+    
+var config = {
+    method: 'post',
+    url: baseUrl+'newRequest',
+    data : data
+  };
+  
+  return axios(config)
+  
+  
+}
