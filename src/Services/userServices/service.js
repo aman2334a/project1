@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseUrl = 'http://localhost:7000/v1/'
+const baseUrl = 'https://fintaxcial-2.onrender.com/v1/'
 axios.interceptors.request.use((request) => {
     let token = localStorage.getItem('Token')
 
