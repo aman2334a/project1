@@ -4,7 +4,7 @@ import Footer  from '../components/Footer'
 import MembershipTemplate from '../templates/MembershipTemplate'
 export default function Membership() {
   return (
-    <div>
+    <div className='static'>
       <Header />
       <MembershipTemplate/>
       <Footer />

@@ -4,6 +4,7 @@ import Sidebar from './Component/SideBar'
 import { useSearchParams } from 'react-router-dom'
 import CustomerWise from '../../templates/admin/Reports/CustomerWise'
 import ServiceWise from '../../templates/admin/Reports/ServiceWise'
+import AdminLayout from '../../templates/admin/Component/AdminLayout.tsx'
 export default function Dashboard() {
   const [viewPage, setViewPage] = React.useState(0)
   const [searchParams, setSearchParams] = useSearchParams()
@@ -17,10 +18,14 @@ export default function Dashboard() {
     }
   },[searchParams])
   return (
-    <div>
-        <Sidebar 
-        element={viewPage===0?<CustomerWise/>:<ServiceWise/>}
-        />
+    <div >
+      <AdminLayout
+       element={viewPage===0?<CustomerWise/>:<ServiceWise/>}
+       title="Reports"
+      />
+          {/* <Sidebar 
+          element={viewPage===0?<CustomerWise/>:<ServiceWise/>}
+          /> */}
     </div>
   )
 }

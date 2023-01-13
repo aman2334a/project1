@@ -5,6 +5,8 @@ import AddScheme from './../../templates/admin/PortalUpdate/AddScheme'
 import HotOffer from './../../templates/admin/PortalUpdate/HotOffer'
 import NewService from './../../templates/admin/PortalUpdate/NewService'
 import ServiceCategory from './../../templates/admin/PortalUpdate/ServiceCategory'
+import AdminLayout from '../../templates/admin/Component/AdminLayout.tsx'
+
 export default function Update() {
   const [viewPage, setViewPage] = React.useState(0)
   const [searchParams, setSearchParams] = useSearchParams()
@@ -26,8 +28,9 @@ export default function Update() {
   }, [searchParams])
   return (
     <div>
-        <Sidebar
+        <AdminLayout
         element={viewPage===0?<AddScheme/>:viewPage==1?<HotOffer/>:viewPage==3?<ServiceCategory/>:<NewService/>}
+        title="Portal Update"
         />
     </div>
   )

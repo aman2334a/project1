@@ -4,7 +4,7 @@ import Footer  from '../components/Footer'
 import ServiceTemplate from '../templates/ServiceTemplate'
 export default function Service() {
   return (
-    <div>
+    <div className='static'>
       <Header />
       <ServiceTemplate/>
       <Footer />

@@ -4,7 +4,7 @@ import Header from '../components/Header'
 import HomeTemplate from '../templates/Home'
 export default function Home() {
   return (
-    <div>
+    <div className='static'>
       <Header />
       <HomeTemplate/>
       <Footer/> 

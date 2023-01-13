@@ -4,13 +4,16 @@ import Subscription from './Subscription'
 import { useNavigate } from 'react-router-dom'
 import { getUserProfile } from '../../Services/userServices/service'
 import { Spin } from 'antd';
+import CreateRequest from '../../templates/user/CreateRequest'
 import { LoadingOutlined } from '@ant-design/icons';
+import UserLayout from '../../templates/user/Component/UserLayout.tsx'
 
 
 export default function Dashboard() {
   const navigate = useNavigate()
-  const [checkSubsription, setcheckSubsription] = useState()
+  const [checkSubsription, setcheckSubsription] = useState(true)
   const [userData, setuserData] = useState({})
+  
   const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     let token = localStorage.getItem('Token')
@@ -22,7 +25,7 @@ export default function Dashboard() {
         setIsLoading(false)
         console.log(response.data?.data.subscription);
         setuserData(response.data?.data)
-        setcheckSubsription(response.data?.data?.subscription)
+        // setcheckSubsription(response.data?.data?.subscription)
       })
       .catch(function (error) {
         console.log(error);
@@ -31,7 +34,12 @@ export default function Dashboard() {
   }, [])
 
   return (
-{/* <Layout/> */}
+    <>
+    <UserLayout
+    element={checkSubsription ? <CreateRequest /> : <Subscription />}
+    />
+
+    </>
     // <div>
     //   {
     //     isLoading ?
@@ -44,7 +52,7 @@ export default function Dashboard() {
     //       </div>
     //       :
     //       <>
-    //         {checkSubsription ? <MainDashboard /> : <Subscription />}
+    //         {checkSubsription ? <CreateRequest /> : <Subscription />}
     //       </>
     //   }
     // </div>
