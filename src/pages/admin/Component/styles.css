@@ -22,7 +22,7 @@ body {
 /******/
 .navbar {
   position: relative;
-  height: 61.6px; /***What i tweak from reactstrap*/
+  height: auto; /***What i tweak from reactstrap*/
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;

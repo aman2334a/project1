@@ -11,7 +11,7 @@ export default function Dashboard() {
   useEffect(()=>{
     console.log(searchParams.get('view'))
     let view=searchParams.get('view')
-    if(view==='ServiceWise'){
+    if(view==='CustomerWise'){
       setViewPage(1)
     }else{
       setViewPage(0)
@@ -20,7 +20,7 @@ export default function Dashboard() {
   return (
     <div >
       <AdminLayout
-       element={viewPage===0?<CustomerWise/>:<ServiceWise/>}
+       element={viewPage===0?<ServiceWise/>:<CustomerWise/>}
        title="Reports"
       />
           {/* <Sidebar 

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import MainDashboard from '../../templates/user/MainDashboard'
 import Subscription from './Subscription'
 import { useNavigate } from 'react-router-dom'
 import { getUserProfile } from '../../Services/userServices/service'
@@ -7,6 +6,7 @@ import { Spin } from 'antd';
 import CreateRequest from '../../templates/user/CreateRequest'
 import { LoadingOutlined } from '@ant-design/icons';
 import UserLayout from '../../templates/user/Component/UserLayout.tsx'
+import MainDashboard from '../../templates/user/MainDashboard'
 
 
 export default function Dashboard() {
@@ -16,16 +16,16 @@ export default function Dashboard() {
   
   const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
-    let token = localStorage.getItem('Token')
-    if (!token) {
-      navigate('/login')
+    let userData = JSON.parse(localStorage.getItem('fintaxcialUser'))
+    if (!userData?.token || !userData.role == 'user') {
+        navigate("/login");
     }
     getUserProfile()
       .then(function (response) {
         setIsLoading(false)
         console.log(response.data?.data.subscription);
         setuserData(response.data?.data)
-        // setcheckSubsription(response.data?.data?.subscription)
+        setcheckSubsription(response.data?.data?.subscription)
       })
       .catch(function (error) {
         console.log(error);
@@ -36,7 +36,7 @@ export default function Dashboard() {
   return (
     <>
     <UserLayout
-    element={checkSubsription ? <CreateRequest /> : <Subscription />}
+    element={checkSubsription ? <MainDashboard /> : <Subscription />}
     />
 
     </>

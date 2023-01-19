@@ -45,18 +45,18 @@ export default function Payment() {
       dataIndex: ['userId','mobile'],
       key: 'country',
     },
-    {
-      title: 'Action',
-      key: 'action',
-      render: (_, record) => (
-        // <Space size="middle">
-        <div className='btnDiv'>
-          {/* <Button onClick={() => showModal(record._id)}  >Edit</Button> */}
-          <Button onClick={() => deleteRecord(record._id)} danger>Delete</Button>
-        </div>
-        // </Space>
-      ),
-    },
+    // {
+    //   title: 'Action',
+    //   key: 'action',
+    //   render: (_, record) => (
+    //     // <Space size="middle">
+    //     <div className='btnDiv'>
+    //       {/* <Button onClick={() => showModal(record._id)}  >Edit</Button> */}
+    //       <Button onClick={() => deleteRecord(record._id)} danger>Delete</Button>
+    //     </div>
+    //     // </Space>
+    //   ),
+    // },
   ]
 
   const deleteRecord=()=>{
@@ -74,7 +74,7 @@ export default function Payment() {
     })
   },[])
   return (
-    <div>
+    <div className='main-Page'>
       <Table
       columns={columns}
       dataSource={paymentData}

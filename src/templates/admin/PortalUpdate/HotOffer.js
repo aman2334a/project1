@@ -134,7 +134,7 @@ export default function HotOffer() {
     }, [reloadApiData])
 
     return (
-        <div>
+        <div className='main-Page'>
             <div className="container hotOffer">
 
                 <div className='form-section'>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import AdminHeader from '../../admin/Component/AdminHeader';
 // import './index.css';
 import {
   DesktopOutlined,
@@ -8,6 +9,7 @@ import {
   TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 
@@ -41,12 +43,12 @@ const items: MenuItem[] = [
   getItem('Files', '9', <FileOutlined />),
 ];
 
-const UserLayout: React.FC<{ element: React.ReactNode }> = ({ element }) => {
-  const [collapsed, setCollapsed] = useState(false);
+const UserLayout: React.FC<{ element: React.ReactNode,title:any }> = ({ element,title }) => {
+  const [collapsed, setCollapsed] = useState(true);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-
+  const navigate=useNavigate()
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
@@ -57,11 +59,11 @@ const UserLayout: React.FC<{ element: React.ReactNode }> = ({ element }) => {
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline"  >
           <Menu.Item key="1">
             {/* <Icon type="user" /> */}
-            <NavLink to='/user'><PieChartOutlined /><span>DashBoard</span></NavLink>
+            <NavLink to='/Dashboard'><PieChartOutlined /><span>DashBoard</span></NavLink>
           </Menu.Item>
           <Menu.Item key="2">
             {/* <Icon type="user" /> */}
-            <NavLink to='/user'><DesktopOutlined /><span>New Request</span></NavLink>
+            <NavLink to='/requests'><DesktopOutlined /><span>New Request</span></NavLink>
           </Menu.Item>
           <Menu.SubMenu title={
             <span>
@@ -69,21 +71,27 @@ const UserLayout: React.FC<{ element: React.ReactNode }> = ({ element }) => {
               <span>Setting</span>
             </span>
           }>
-            <Menu.Item>Profile</Menu.Item>
-            <Menu.Item>Logout</Menu.Item>
+            <Menu.Item><NavLink to='/Setting'>Profile</NavLink></Menu.Item>
+            <Menu.Item
+            onClick={()=>{
+              localStorage.clear()
+              navigate('/')
+            }}
+            >Logout</Menu.Item>
           </Menu.SubMenu>
         </Menu>
       </Sider>
       <Layout className="site-layout">
         <Header style={{ padding: 0, background: colorBgContainer }} >
           {/* <img src='./assets/images/FTnew.png'/> */}
+          <AdminHeader/>
         </Header>
         <Content style={{ margin: '0 16px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
             <Breadcrumb.Item>DashBoard</Breadcrumb.Item>
-            {/* <Breadcrumb.Item>Bill</Breadcrumb.Item> */}
+            <Breadcrumb.Item>{title}</Breadcrumb.Item>
           </Breadcrumb>
-          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
+          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }} className={"mainDiv"}>
             {element}
           </div>
         </Content>

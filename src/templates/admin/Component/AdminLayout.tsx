@@ -50,8 +50,8 @@ const AdminLayout: React.FC<{ element: React.ReactNode,title:any }> = ({ element
 
     return (
         <Layout style={{ minHeight: '100vh' }}>
-            <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-            <Header />
+            <Sider collapsible collapsed={collapsed}   breakpoint={'sm'}  collapsedWidth={50} width={200} onCollapse={(value) => setCollapsed(value)}>
+            {/* <Header /> */}
                 <div style={{ height: 32, margin: 16, }} >
                     {/* <img src='./assets/images/FTnew.png'/> */}
                 </div>
@@ -63,8 +63,8 @@ const AdminLayout: React.FC<{ element: React.ReactNode,title:any }> = ({ element
                             <span>Reports</span>
                         </span>
                     }>
-                        <Menu.Item><NavLink to="/admin/reports?view=CustomerWise">Customer Wise</NavLink></Menu.Item>
                         <Menu.Item><NavLink to="/admin/reports?view=ServiceWise">Service Wise</NavLink></Menu.Item>
+                        <Menu.Item><NavLink to="/admin/reports?view=CustomerWise">Customer Wise</NavLink></Menu.Item>
                     </Menu.SubMenu>
                     <Menu.SubMenu title={
                         <span>
@@ -75,6 +75,7 @@ const AdminLayout: React.FC<{ element: React.ReactNode,title:any }> = ({ element
                         <Menu.Item><NavLink to="/admin/updates?view=AddScheme">Add Schemes</NavLink></Menu.Item>
                         <Menu.Item><NavLink to="/admin/updates?view=HotOffer">Hot Offer</NavLink></Menu.Item>
                         <Menu.Item><NavLink to="/admin/updates?view=ServiceCategory">Services Category </NavLink></Menu.Item>
+                        <Menu.Item><NavLink to="/admin/updates?view=ServiceSubCategory">Services Sub-Category </NavLink></Menu.Item>
                     </Menu.SubMenu>
                     <Menu.SubMenu title={
                         <span>

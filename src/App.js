@@ -13,6 +13,9 @@ import Update from './pages/admin/Update';
 import Signup from './pages/Signup';
 import Dashboard from './pages/user/Dashboard';
 import { ToastProvider } from "react-toast-notifications";
+import Setting from './pages/user/Setting'
+import Request from './pages/user/Requests'
+import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
   return (
@@ -28,10 +31,13 @@ function App() {
           <Route index path="/login" element={<Login />} />
           <Route index path="/signup" element={<Signup />} />
           <Route index path="/admin" element={<AdminLogin />} />
+          <Route index path="/resetPassword" element={<ForgotPassword />} />
           <Route index path="/admin/reports" element={<AdminDashboard />} />
           <Route index path="/admin/updates" element={<Update />} />
           <Route index path="/admin/manage" element={<Manage />} />
-           <Route index path="/user" element={<Dashboard />} />
+          <Route index path="/dashboard" element={<Dashboard />} />
+          <Route index path="/Requests" element={<Request />} />
+          <Route index path="/Setting" element={<Setting />} />
         </Routes>
       </ToastProvider>
     </div>

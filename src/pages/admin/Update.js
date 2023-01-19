@@ -6,6 +6,7 @@ import HotOffer from './../../templates/admin/PortalUpdate/HotOffer'
 import NewService from './../../templates/admin/PortalUpdate/NewService'
 import ServiceCategory from './../../templates/admin/PortalUpdate/ServiceCategory'
 import AdminLayout from '../../templates/admin/Component/AdminLayout.tsx'
+import SubCategory from '../../templates/admin/PortalUpdate/SubCategory'
 
 export default function Update() {
   const [viewPage, setViewPage] = React.useState(0)
@@ -22,6 +23,10 @@ export default function Update() {
     else if(view ==='ServiceCategory'){
       setViewPage(3)
     }
+    else if(view ==='ServiceSubCategory'){
+      setViewPage(4)
+    }
+
     else {
       setViewPage(0)
     }
@@ -29,7 +34,7 @@ export default function Update() {
   return (
     <div>
         <AdminLayout
-        element={viewPage===0?<AddScheme/>:viewPage==1?<HotOffer/>:viewPage==3?<ServiceCategory/>:<NewService/>}
+        element={viewPage===0?<AddScheme/>:viewPage==1?<HotOffer/>:viewPage==3?<ServiceCategory/>:viewPage==4?<SubCategory/>:<NewService/>}
         title="Portal Update"
         />
     </div>

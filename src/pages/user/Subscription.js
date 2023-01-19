@@ -18,7 +18,7 @@ export default function Subscription() {
         }
         var options = {
             "key": 'rzp_test_uduIzmjrW40MRu',
-            "amount": 2000, // 2000 paise = INR 20, amount in paisa
+            "amount": plan=='Individual'?100000:500000, // 2000 paise = INR 20, amount in paisa
             "name": "",
             "description": "",
             'order_id': "",
@@ -28,13 +28,13 @@ export default function Subscription() {
                     razorpay_signature: response.razorpay_signature,
                     razorpay_order_id: response.razorpay_order_id,
                     transactionid: response.razorpay_payment_id,
-                    transactionamount: '20',
+                    transactionamount: plan=='Individual'?100000:500000,
                 }
                 axios.post('http://localhost:7000/v1/payment', values)
                     .then((res) => {
                         addToast("Successfully", { appearance: "success" })
                         setTimeout(()=>{
-                            navigate('/user')
+                            navigate('/requests')
                         },1000)
                     })
                     .catch((e) => {
@@ -43,7 +43,7 @@ export default function Subscription() {
                     })
             },
         };
-        axios.post('http://localhost:7000/v1/order', { amount: '2000' })
+        axios.post('http://localhost:7000/v1/order', { amount: plan=='Individual'?100000:500000 })
             .then(res => {
                 options.order_id = res.data.id;
                 options.amount = res.data.amount;

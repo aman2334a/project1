@@ -4,9 +4,10 @@ th.ant-table-cell {
   }
 
 a{
-    text-decoration: none !important;
-    color: inherit; 
+    /* text-decoration: underline !important; */
+    color: red; 
 }
+
 .is-active{
     border: 1px solid black;
 }
@@ -15,6 +16,7 @@ a{
     box-shadow: 0px 13px 7px -15px #111;
 
 }
+
 .header .Links{
     /* display: flex; */
     column-gap: 5%;
@@ -47,14 +49,14 @@ a{
     border: 1px solid #dfdcdc;
     padding: 4% 4%;
     border-radius: 3%;
-    margin-bottom: 20%;
+    /* margin-bottom: 20%; */
     text-align: center;
 }
 .membershipCard{
     border: 1px solid #dfdcdc;
     padding: 4% 4%;
     border-radius: 10px;
-    margin-bottom: 20%;
+    /* margin-bottom: 20%; */
     text-align: center;
   }
 .solutionSection{
@@ -155,7 +157,7 @@ button.accordion-button.collapsed {
     height:9px;
 }
 .text-muted{
-font-size: 14px;
+font-size: 18px;
 }
 .muted_text{
     word-break: keep-all;
@@ -206,10 +208,11 @@ form.userRequestForm {
     gap: 10px;
 }
 .MainDiv {
-    overflow-x: scroll;
+    overflow-x: scroll !important;
 }
 .dashBoardLogo{
     padding-left: 2.5%;
+    width: 150px;
 }
 .adminHeader {
     display: flex;
@@ -218,4 +221,19 @@ form.userRequestForm {
 span.logoutBtn {
     padding-right: 3%;
     cursor: pointer;
+}
+
+
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+  .serviceCard {
+    min-height: 365px;
+}
+
+
+
 }

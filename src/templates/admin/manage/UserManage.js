@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Table, Button } from 'antd'
-import { getAllUser } from '../../../Services/adminServices/service'
+import { Table, Button,Modal } from 'antd'
+import { deleteUserApi, getAllUser } from '../../../Services/adminServices/service'
+import { useToasts } from "react-toast-notifications";
 
 export default function UserManage() {
   const [userData, setUserData] = useState([])
+  const { addToast } = useToasts();
+  const [modal, contextHolder] = Modal.useModal();
+  const [reloadApidata, setReloadApidata] = useState(true)
+  const [isdeleteOpen, setIsdeleteOpen] = useState(false)
   const columns = [
     {
       title: 'Name',
@@ -21,9 +26,9 @@ export default function UserManage() {
       dataIndex: 'subscription',
       key: 'subscription',
       render: (_, record) => (
-      <>{record.subscription?"Paid":"Unpaid"}</>
+        <>{record.subscription ? "Paid" : "Unpaid"}</>
         ),
-    },
+      },
     {
       title: 'Country',
       dataIndex: 'country',
@@ -46,48 +51,64 @@ export default function UserManage() {
     },
     {
       title: 'GST Number',
-      gstNumber: 'email',
+      dataIndex: 'gstNumber',
       key: 'email',
     },
-    {
-      title: 'Action',
-      key: 'action',
-      render: (_, record) => (
-        // <Space size="middle">
-        <div className='btnDiv'>
-          <Button onClick={() => showModal(record._id)}  >Edit</Button>
-          <Button onClick={() => deleteUser(record._id)} danger>Delete</Button>
-        </div>
-        // </Space>
-      ),
-    },
-  ]
-  useEffect(() => {
-    getAllUser()
+    // {
+    //   title: 'Action',
+    //   key: 'action',
+    //   render: (_, record) => (
+    //     // <Space size="middle">
+    //     <div className='btnDiv'>
+    //       <Button onClick={() => showModal(record._id)}  >Edit</Button>
+    //       <Button onClick={() => deleteUser(record._id)} danger>Delete</Button>
+    //     </div>
+    //     // </Space>
+    //     ),
+    //   },
+    ]
+    useEffect(() => {
+      getAllUser()
       .then(function (response) {
         console.log(response.data);
         let tmp = response.data?.data
         setUserData([...tmp])
       })
       .catch(function (error) {
+        addToast("Something went wrong", { appearance: "error" })
         console.log(error);
       });
-  }, [])
-
-  const showModal = () => {
-
+    }, [reloadApidata])
+    
+    const showModal = () => {
+      
+    }
+    const deleteUser = (id) => {
+      deleteUserApi(id)
+      .then((res) => {
+        setReloadApidata(!reloadApidata)
+        addToast("Successfully Deleted", { appearance: "success" })
+        
+      })
+      .catch((e) => {
+        console.log(e)
+        addToast("Something went wrong", { appearance: "error" })
+      })
   }
-  const deleteUser = () => {
-
-  }
+  const config = {
+    title: 'Are you Sure',
+    onOk:{deleteUser},
+  };
 
   return (
-    <div>
+    <div className='main-Page'>
       <Table
         columns={columns}
         dataSource={userData}
       />
+      {contextHolder}
 
     </div>
   )
 }
+

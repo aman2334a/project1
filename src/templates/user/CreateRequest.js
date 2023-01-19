@@ -11,7 +11,6 @@ export default function CreateRequest() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(inputData)
         createRequestAPi(inputData)
             .then(function (response) {
                 console.log(response.data);
@@ -40,6 +39,7 @@ export default function CreateRequest() {
                     <label for="exampleFormControlSelect1">Select Service Category</label>
                     <select class="form-control" id="exampleFormControlSelect1"
                         onChange={(e) => {
+                            console.log(e.target.value)
                             let tmp = { ...inputData }
                             tmp.categoryId = e.target.value
                             setInputData({ ...tmp })

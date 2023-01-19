@@ -3,6 +3,7 @@ import React from "react";
 import './footer.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { SocialIcon } from 'react-social-icons';
+import { NavLink } from "react-router-dom";
 import { faCoffee, faFacebook, faPhoneSquareAlt } from '@fortawesome/free-solid-svg-icons'
 function Footer() {
   return (
@@ -44,11 +45,12 @@ function Footer() {
             <div class="single_footer single_footer_address">
               <h4>Page Link</h4>
               <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Services </a></li>
-                <li><a href="#">Articles</a></li>
-                <li><a href="#">Membership</a></li>
+                <li><NavLink to='/'>Home</NavLink></li>
+                <li><NavLink to='/about'>About Us</NavLink></li>
+                <li><NavLink to='/services'>Services</NavLink></li>
+                <li><NavLink to='/membership'>Membership</NavLink></li>
+                <li><NavLink to='/contact'>Contact</NavLink></li>
+                {/* <li><NavLink>Home</NavLink></li> */}
               </ul>
             </div>
           </div>
@@ -65,7 +67,7 @@ function Footer() {
             <div class="social_profile">
               <ul>
                 <li><a href="#"><SocialIcon url="https://twitter.com/" /></a></li>
-                <li><a href="#"><i class="fab fa-twitter"><SocialIcon url="https://www.instagram.com/" /></i></a></li>
+                <li><a href="#"><SocialIcon url="https://www.instagram.com/" /></a></li>
                 <li><a href="#"><SocialIcon url="https://www.facebook.com/" /></a></li>
                 <li><a href="#"><SocialIcon url="https://gmail.com/" /></a></li>
               </ul>

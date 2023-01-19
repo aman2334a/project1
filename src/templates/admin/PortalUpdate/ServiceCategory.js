@@ -119,7 +119,7 @@ export default function ServiceCategory() {
 
 
   return (
-    <div>
+    <div className='main-Page'>
       <div className='container '>
         <div className='form-section'>
           <p>Add Service Category</p>

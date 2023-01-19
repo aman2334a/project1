@@ -1,12 +1,13 @@
 import axios from 'axios'
-const baseUrl = 'https://fintaxcial-2.onrender.com/v1/'
+// const baseUrl = 'https://fintaxcial-2.onrender.com/v1/'
+const baseUrl = 'http://localhost:7000/v1/'
 
 axios.interceptors.request.use((request) => {
-  let token = localStorage.getItem('Token')
-
-  request.headers = { 'Authorization': 'Bearer ' + token }
+  let userData = JSON.parse(localStorage.getItem('fintaxcialUser'))
+  request.headers = { 'Authorization': 'Bearer ' + userData?.token }
   return request
 })
+
 export const adminLogin = (loginData) => {
   var config = {
     method: 'post',
@@ -202,6 +203,70 @@ export const getAllServiceRequests = () => {
 
 }
 
+export const addSubCategory = (data) => {
+
+  var config = {
+    method: 'post',
+    url: baseUrl + 'admin/subcategory',
+
+    data: data
+  };
+
+  return axios(config)
+}
+
+export const getSubCategoryById = (id) => {
+
+  var config = {
+    method: 'get',
+    url: baseUrl + 'admin/subcategory/' + id,
+
+  };
+
+  return axios(config)
+
+
+}
+
+export const updateSubCategory = (id, data) => {
+
+  var config = {
+    method: 'put',
+    url: baseUrl + 'admin/subcategory/' + id,
+    data: data
+  };
+
+  return axios(config)
+}
+
+export const deleteSubCategory = (id) => {
+
+  var config = {
+    method: 'delete',
+    url: baseUrl + 'admin/subcategory/' + id,
+
+  };
+
+  return axios(config)
+
+
+}
+export const getAllSubCategory=()=>{
+  var config = {
+    method: 'get',
+    url: baseUrl + 'admin/subcategory',
+
+  };
+
+  return axios(config)
+
+
+}
+
+
+
+
+
 export const  getAllUser=()=>{
   var config = {
     method: 'get',
@@ -211,6 +276,17 @@ export const  getAllUser=()=>{
   return axios(config)
  
 }
+
+export const deleteUserApi=(id)=>{
+  var config = {
+    method: 'delete',
+    url: baseUrl+'admin/user/'+id,
+   
+  };
+  
+  return axios(config)
+  
+}
 export const  getAllTransaction=()=>{
   var config = {
     method: 'get',
@@ -219,6 +295,49 @@ export const  getAllTransaction=()=>{
   
   return axios(config)
  
+}
+
+
+export const  getRequestByStatusApi=(status)=>{
+  let data={
+    "status":status
+  }
+  var config = {
+    method: 'post',
+    url: baseUrl+'admin/requestbyStatus',
+   
+    data : data
+  };
+  
+  return axios(config)
+  
+}
+
+export const getRequestByCustomerWiseAPi=()=>{
+  var config = {
+    method: 'get',
+    url: baseUrl+'admin/serviceRequests/customerWise',
+   
+  };
+  
+  return axios(config)
+  
+}
+
+
+export const updateRequestStatusApi=(id,status)=>{
+  console.log(id,status)
+  let data={
+    "status":status
+  }
+  var config = {
+    method: 'post',
+    url: baseUrl+'admin/updateRequestStatus/'+id,
+    data : data
+  };
+  
+  return axios(config)
+  
 }
 
 

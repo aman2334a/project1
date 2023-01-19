@@ -43,8 +43,13 @@ function Signup() {
             navigate('/login')
           })
           .catch(function (error) {
+            if(error.response.status==400){
+                addToast(error?.response?.data, { appearance: "error" })
+
+            }else{
+                addToast('Something went wrong', { appearance: "error" })
+            }
             console.log(error);
-            addToast("Something went wrong!", { appearance: "error" })
           });
         console.log(inputData)
     }
@@ -98,45 +103,46 @@ function Signup() {
                                 <Accordion.Header> Individual</Accordion.Header>
                                 <Accordion.Body>
 
-                                    <div class="form-check">
+                                    <div className="form-check">
                                         <input class="form-check-input" type="radio" name="individual"  
                                         onChange={(e)=>handleChange('type',e.target.value)}
                                         value="option 1"
                                         />
-                                        <label class="form-check-label" >
-                                            option 1
+                                        <label className="form-check-label" >
+                                        Individual
                                         </label>
                                     </div>
-                                    <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="individual"  
-                                        onChange={(e)=>handleChange('type',e.target.value)}
-                                        value="option 2"
-                                        />
-                                        <label class="form-check-label" >
-                                            option 1
-                                        </label>
-                                    </div>
+                                  
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
                                 <Accordion.Header>Corporate</Accordion.Header>
                                 <Accordion.Body>
-                                    <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="individual"  
+                                    <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="individual"  
                                         onChange={(e)=>handleChange('type',e.target.value)}
                                         value="option 3"
                                         />
                                         <label class="form-check-label" for="defaultCheck1">
-                                            option 2
+                                        Ltd
                                         </label>
                                     </div>
-                                    <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="individual"  
+                                    <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="individual"  
                                         onChange={(e)=>handleChange('type',e.target.value)}
                                         value="option 3"
                                         />
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            option 3
+                                        <label className="form-check-label" for="defaultCheck1">
+                                        Pvt. Ltd
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="individual"  
+                                        onChange={(e)=>handleChange('type',e.target.value)}
+                                        value="option 3"
+                                        />
+                                        <label className="form-check-label" for="defaultCheck1">
+                                        LLP
                                         </label>
                                     </div>
 
@@ -145,22 +151,69 @@ function Signup() {
                             <Accordion.Item eventKey="2">
                                 <Accordion.Header>Others</Accordion.Header>
                                 <Accordion.Body>
-                                    <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="individual"  
-                                        onChange={(e)=>handleChange('type',e.target.value)}
-                                        value="option 4"
-                                        />
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            option 4
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="individual"  
+                                    
+                                    <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="individual"  
                                         onChange={(e)=>handleChange('type',e.target.value)}
                                         value="option 5"
                                         />
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            option 5
+                                        <label className="form-check-label" for="defaultCheck1">
+                                        Society/Trust
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="individual"  
+                                        onChange={(e)=>handleChange('type',e.target.value)}
+                                        value="option 5"
+                                        />
+                                        <label className="form-check-label" for="defaultCheck1">
+                                        HUF
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="individual"  
+                                        onChange={(e)=>handleChange('type',e.target.value)}
+                                        value="option 5"
+                                        />
+                                        <label className="form-check-label" for="defaultCheck1">
+                                        Partnership Firms
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="individual"  
+                                        onChange={(e)=>handleChange('type',e.target.value)}
+                                        value="option 5"
+                                        />
+                                        <label className="form-check-label" for="defaultCheck1">
+                                        AOP
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="individual"  
+                                        onChange={(e)=>handleChange('type',e.target.value)}
+                                        value="option 5"
+                                        />
+                                        <label className="form-check-label" for="defaultCheck1">
+                                        Beneficiary Trust
+                                          
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="individual"  
+                                        onChange={(e)=>handleChange('type',e.target.value)}
+                                        value="option 5"
+                                        />
+                                        <label className="form-check-label" for="defaultCheck1">
+                                        Political Party
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="individual"  
+                                        onChange={(e)=>handleChange('type',e.target.value)}
+                                        value="option 5"
+                                        />
+                                        <label className="form-check-label" for="defaultCheck1">
+                                        Any Other
                                         </label>
                                     </div>
                                 </Accordion.Body>

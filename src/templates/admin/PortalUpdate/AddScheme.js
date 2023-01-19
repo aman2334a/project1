@@ -136,7 +136,7 @@ export default function AddScheme() {
       });
   }
   return (
-    <div>
+    <div className='main-Page'>
         <div className="container scheme">
 
           <div className='form-section'>
