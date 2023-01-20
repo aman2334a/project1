@@ -4,9 +4,9 @@ import Billing from './setting/Billing'
 export default function SettingTemplate() {
   // const [page, setPage] = useState(1)
   return (
-    <div className='main-page'>
+    <div className=''>
       <Profile />
-      <Billing />
+      {/* <Billing /> */}
     </div>
   )
 }

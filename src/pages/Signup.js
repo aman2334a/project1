@@ -11,46 +11,50 @@ import { useNavigate } from "react-router-dom";
 // const label = { inputProps: { "aria-label": "Switch demo" } };
 function Signup() {
     const navigate = useNavigate();
+    const [isSubmitDisable, setIsSubmitDisable] = useState(false)
 
     const { addToast } = useToasts();
     const [showInput, setshowInput] = useState(false);
     const [inputData, setInputData] = useState({
-        name:'',
-        email:'',
-        password:'',
-        country:'',
-        mobile:'',
-        businessName:'',
-        type:'',
-        gstNumber:'',
-        referalCode:'',
+        name: '',
+        email: '',
+        password: '',
+        country: '',
+        mobile: '',
+        businessName: '',
+        type: '',
+        gstNumber: '',
+        referalCode: '',
     })
-    const handleChange=(key,value)=>{
-        console.log(key,value)
-        let tmp={...inputData}
-        tmp[key]=value
-        setInputData({...tmp})
+    const handleChange = (key, value) => {
+        console.log(key, value)
+        let tmp = { ...inputData }
+        tmp[key] = value
+        setInputData({ ...tmp })
     }
     const handleToggle = () => {
         setshowInput(!showInput)
     };
-    const handleSubmit=(e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault()
+        setIsSubmitDisable(true)
         userSignUp(inputData)
-        .then(function (response) {
-            console.log(response.data);
-            addToast("Successfully register!", { appearance: "success" })
-            navigate('/login')
-          })
-          .catch(function (error) {
-            if(error.response.status==400){
-                addToast(error?.response?.data, { appearance: "error" })
+            .then(function (response) {
+                console.log(response.data);
+                addToast("Please Check Your Mail Inbox", { appearance: "success" })
+                // navigate('/login')
+            })
+            .catch(function (error) {
+                setIsSubmitDisable(true)
 
-            }else{
-                addToast('Something went wrong', { appearance: "error" })
-            }
-            console.log(error);
-          });
+                if (error.response.status == 400) {
+                    addToast(error?.response?.data, { appearance: "error" })
+
+                } else {
+                    addToast('Something went wrong', { appearance: "error" })
+                }
+                console.log(error);
+            });
         console.log(inputData)
     }
 
@@ -77,24 +81,24 @@ function Signup() {
                         </div>
                         <label htmlFor="business">Business Country</label>
                         <select name="business" id="business" className="form-control"
-                        onChange={(e)=>handleChange("country",e.target.value)}
+                            onChange={(e) => handleChange("country", e.target.value)}
                         >
-                            <option  disabled value="Please Select">Please Select</option>
+                            <option disabled value="Please Select">Please Select</option>
                             <option value="india">India</option>
                             <option value="Australia">Australia</option>
                             <option value="United States">United States</option>
                             <option value="United Kingdom">United Kingdom</option>
                         </select>
                         <label>Name</label>
-                        <input type="text" className="form-control" value={inputData.name} onChange={(e)=>handleChange('name',e.target.value)}/>
+                        <input type="text" className="form-control" value={inputData.name} onChange={(e) => handleChange('name', e.target.value)} />
                         <label>Password</label>
-                        <input type="password" className="form-control" value={inputData.password} onChange={(e)=>handleChange('password',e.target.value)}/>
+                        <input type="password" className="form-control" value={inputData.password} onChange={(e) => handleChange('password', e.target.value)} />
                         <label>Email</label>
-                        <input type="email" className="form-control"  value={inputData.email} onChange={(e)=>handleChange('email',e.target.value)}/>
+                        <input type="email" className="form-control" value={inputData.email} onChange={(e) => handleChange('email', e.target.value)} />
                         <label>Mobile</label>
-                        <input type="number" className="form-control" value={inputData.mobile} onChange={(e)=>handleChange('mobile',e.target.value)}/>
+                        <input type="number" className="form-control" value={inputData.mobile} onChange={(e) => handleChange('mobile', e.target.value)} />
                         <label>Business Name</label>
-                        <input type="text" className="form-control" value={inputData.businessName} onChange={(e)=>handleChange('businessName',e.target.value)}/>
+                        <input type="text" className="form-control" value={inputData.businessName} onChange={(e) => handleChange('businessName', e.target.value)} />
                         <label htmlFor="businessname">
                             Type<span className="mandatory-field">*</span>
                         </label>
@@ -104,45 +108,45 @@ function Signup() {
                                 <Accordion.Body>
 
                                     <div className="form-check">
-                                        <input class="form-check-input" type="radio" name="individual"  
-                                        onChange={(e)=>handleChange('type',e.target.value)}
-                                        value="option 1"
+                                        <input class="form-check-input" type="radio" name="individual"
+                                            onChange={(e) => handleChange('type', e.target.value)}
+                                            value="option 1"
                                         />
                                         <label className="form-check-label" >
-                                        Individual
+                                            Individual
                                         </label>
                                     </div>
-                                  
+
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
                                 <Accordion.Header>Corporate</Accordion.Header>
                                 <Accordion.Body>
                                     <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="individual"  
-                                        onChange={(e)=>handleChange('type',e.target.value)}
-                                        value="option 3"
+                                        <input className="form-check-input" type="radio" name="individual"
+                                            onChange={(e) => handleChange('type', e.target.value)}
+                                            value="option 3"
                                         />
                                         <label class="form-check-label" for="defaultCheck1">
-                                        Ltd
+                                            Ltd
                                         </label>
                                     </div>
                                     <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="individual"  
-                                        onChange={(e)=>handleChange('type',e.target.value)}
-                                        value="option 3"
+                                        <input className="form-check-input" type="radio" name="individual"
+                                            onChange={(e) => handleChange('type', e.target.value)}
+                                            value="option 3"
                                         />
                                         <label className="form-check-label" for="defaultCheck1">
-                                        Pvt. Ltd
+                                            Pvt. Ltd
                                         </label>
                                     </div>
                                     <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="individual"  
-                                        onChange={(e)=>handleChange('type',e.target.value)}
-                                        value="option 3"
+                                        <input className="form-check-input" type="radio" name="individual"
+                                            onChange={(e) => handleChange('type', e.target.value)}
+                                            value="option 3"
                                         />
                                         <label className="form-check-label" for="defaultCheck1">
-                                        LLP
+                                            LLP
                                         </label>
                                     </div>
 
@@ -151,82 +155,82 @@ function Signup() {
                             <Accordion.Item eventKey="2">
                                 <Accordion.Header>Others</Accordion.Header>
                                 <Accordion.Body>
-                                    
+
                                     <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="individual"  
-                                        onChange={(e)=>handleChange('type',e.target.value)}
-                                        value="option 5"
+                                        <input className="form-check-input" type="radio" name="individual"
+                                            onChange={(e) => handleChange('type', e.target.value)}
+                                            value="option 5"
                                         />
                                         <label className="form-check-label" for="defaultCheck1">
-                                        Society/Trust
+                                            Society/Trust
                                         </label>
                                     </div>
                                     <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="individual"  
-                                        onChange={(e)=>handleChange('type',e.target.value)}
-                                        value="option 5"
+                                        <input className="form-check-input" type="radio" name="individual"
+                                            onChange={(e) => handleChange('type', e.target.value)}
+                                            value="option 5"
                                         />
                                         <label className="form-check-label" for="defaultCheck1">
-                                        HUF
+                                            HUF
                                         </label>
                                     </div>
                                     <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="individual"  
-                                        onChange={(e)=>handleChange('type',e.target.value)}
-                                        value="option 5"
+                                        <input className="form-check-input" type="radio" name="individual"
+                                            onChange={(e) => handleChange('type', e.target.value)}
+                                            value="option 5"
                                         />
                                         <label className="form-check-label" for="defaultCheck1">
-                                        Partnership Firms
+                                            Partnership Firms
                                         </label>
                                     </div>
                                     <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="individual"  
-                                        onChange={(e)=>handleChange('type',e.target.value)}
-                                        value="option 5"
+                                        <input className="form-check-input" type="radio" name="individual"
+                                            onChange={(e) => handleChange('type', e.target.value)}
+                                            value="option 5"
                                         />
                                         <label className="form-check-label" for="defaultCheck1">
-                                        AOP
+                                            AOP
                                         </label>
                                     </div>
                                     <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="individual"  
-                                        onChange={(e)=>handleChange('type',e.target.value)}
-                                        value="option 5"
+                                        <input className="form-check-input" type="radio" name="individual"
+                                            onChange={(e) => handleChange('type', e.target.value)}
+                                            value="option 5"
                                         />
                                         <label className="form-check-label" for="defaultCheck1">
-                                        Beneficiary Trust
-                                          
+                                            Beneficiary Trust
+
                                         </label>
                                     </div>
                                     <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="individual"  
-                                        onChange={(e)=>handleChange('type',e.target.value)}
-                                        value="option 5"
+                                        <input className="form-check-input" type="radio" name="individual"
+                                            onChange={(e) => handleChange('type', e.target.value)}
+                                            value="option 5"
                                         />
                                         <label className="form-check-label" for="defaultCheck1">
-                                        Political Party
+                                            Political Party
                                         </label>
                                     </div>
                                     <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="individual"  
-                                        onChange={(e)=>handleChange('type',e.target.value)}
-                                        value="option 5"
+                                        <input className="form-check-input" type="radio" name="individual"
+                                            onChange={(e) => handleChange('type', e.target.value)}
+                                            value="option 5"
                                         />
                                         <label className="form-check-label" for="defaultCheck1">
-                                        Any Other
+                                            Any Other
                                         </label>
                                     </div>
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
                         <div className="input_show">
-                            <Switch checked ={showInput} onChange={handleToggle} />GST Registered
+                            <Switch checked={showInput} onChange={handleToggle} />GST Registered
                         </div>
 
                         {showInput ?
                             <>
                                 <label htmlFor="gst_number">GST Number</label>
-                                <input  value={inputData.gstNumber} onChange={(e)=>handleChange('gstNumber',e.target.value)}/>
+                                <input value={inputData.gstNumber} onChange={(e) => handleChange('gstNumber', e.target.value)} />
                             </> :
                             <>
 
@@ -234,8 +238,8 @@ function Signup() {
                         }
 
                         <label>Referal code</label>
-                        <input type="text" value={inputData.referalCode}  onChange={(e)=>handleChange('referalCode',e.target.value)}/>
-                        <button className="btn btn-dark">
+                        <input type="text" value={inputData.referalCode} onChange={(e) => handleChange('referalCode', e.target.value)} />
+                        <button className="btn btn-dark" disabled={isSubmitDisable}>
                             <b>Create Account</b>
                         </button>
                     </div>

@@ -1,6 +1,7 @@
 import axios from 'axios'
 // const baseUrl = 'https://fintaxcial-2.onrender.com/v1/'
-const baseUrl = 'http://localhost:7000/v1/'
+// const baseUrl = 'http://localhost:7000/v1/'
+const baseUrl = 'https://oyster-app-5t2jx.ondigitalocean.app/v1/'
 
 axios.interceptors.request.use((request) => {
   let userData = JSON.parse(localStorage.getItem('fintaxcialUser'))

@@ -33,12 +33,20 @@ export default function LoginTemplate() {
   };
   useEffect(() => {
     let userData = JSON.parse(localStorage.getItem("fintaxcialUser"));
-    if (userData?.token&&userData.role=='admin') {
+    if (userData?.token && userData.role == 'admin') {
       navigate("/admin/reports");
     }
   });
   return (
     <>
+      <div className="header-menu bg-light">
+        <div className="container-fluid">
+          <nav className="navbar navbar-expand-lg navbar-light ">
+            <NavLink to='/'> <img src='/assets/images/FTnew.png' className='dashBoardLogo'/></NavLink>
+          </nav>
+        </div>
+      </div>
+
       <div className="admin-container">
         <div className="container">
           <form onSubmit={handleSubmit}>
@@ -51,15 +59,14 @@ export default function LoginTemplate() {
                     </div>
                   </div>
                   <div className="form-group position-relative">
-                    <span className="zmdi zmdi-account"></span>                         <input
+                    <span className="zmdi zmdi-account"></span>{" "}
+                    <input
                       type="email"
                       id="email"
                       class="form-control"
                       placeholder="Email Address"
                       value={data.email}
-                      onChange={(e) =>
-                        changeData("email", e.target.value)
-                      }
+                      onChange={(e) => changeData("email", e.target.value)}
                     />
                   </div>
 
@@ -74,9 +81,7 @@ export default function LoginTemplate() {
                       onChange={(e) => changeData("password", e.target.value)}
                     />
                   </div>
-                  <button className="btn btn-dark">
-                    <b>Login</b>
-                  </button>
+                  <button className="btn btn-dark">Login</button>
                   {/* <span>Forgot Password?</span> */}
                   {/* <span><NavLink to='/signup'>Create Account</NavLink></span> */}
                 </div>
