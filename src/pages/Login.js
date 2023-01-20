@@ -66,8 +66,12 @@ export default function Login() {
                 navigate('/dashboard')
             })
             .catch(function (error) {
-                addToast("Something went wrong", { appearance: "error" })
                 console.log(error);
+                if(error?.response?.status){
+                    addToast(error?.response?.data, { appearance: "error" })
+                }else{
+                    addToast("Something went wrong",{ appearance: "error" })
+                }
             });
 
     }

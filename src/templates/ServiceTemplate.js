@@ -22,7 +22,7 @@ export default function ServiceTemplate() {
           </div>
         </div>
       </section>
-      <section className="taxation bg-light">
+      <section className="taxation bg-light" id="ourservices">
         <div className="container">
           <div className="row text-center">
             <div className="col-md-8 text-center w-md-50 mx-auto mb-0">

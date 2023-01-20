@@ -126,7 +126,7 @@ export default function HomeTemplate() {
                 Get best expert advice for your Finance, Taxation and
                 Investments related Queries.
               </h3>
-              <p className="quote_text">click here</p>
+              {/* <p className="quote_text">click here</p> */}
             </div>
             <div className="col-md-4 text-lg-right mt-md-0 mt-3 requestQuoteLink">
               <Button
@@ -134,7 +134,11 @@ export default function HomeTemplate() {
                 size="lg"
                 className="button btn btn-primary btn-lg request-btn"
               >
-                <NavLink to={'/contact'}>Request Quote</NavLink>
+                <NavLink to={'/contact'}
+                style={{
+                  color:'#fff'
+                }}
+                >Request Quote</NavLink>
                 
               </Button>
             </div>

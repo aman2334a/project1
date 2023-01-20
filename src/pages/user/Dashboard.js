@@ -7,18 +7,19 @@ import CreateRequest from '../../templates/user/CreateRequest'
 import { LoadingOutlined } from '@ant-design/icons';
 import UserLayout from '../../templates/user/Component/UserLayout.tsx'
 import MainDashboard from '../../templates/user/MainDashboard'
+import AdminHeader from '../../templates/admin/Component/AdminHeader';
 
 
 export default function Dashboard() {
   const navigate = useNavigate()
-  const [checkSubsription, setcheckSubsription] = useState(true)
+  const [checkSubsription, setcheckSubsription] = useState(false)
   const [userData, setuserData] = useState({})
-  
+
   const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     let userData = JSON.parse(localStorage.getItem('fintaxcialUser'))
     if (!userData?.token || !userData.role == 'user') {
-        navigate("/login");
+      navigate("/login");
     }
     getUserProfile()
       .then(function (response) {
@@ -35,9 +36,17 @@ export default function Dashboard() {
 
   return (
     <>
-    <UserLayout
-    element={checkSubsription ? <MainDashboard /> : <Subscription />}
-    />
+      {checkSubsription ?
+        <>
+          <UserLayout
+            element={checkSubsription ? <MainDashboard /> : <Subscription />}
+          />
+        </> :
+        <>
+          <AdminHeader />
+          <Subscription />
+        </>
+      }
 
     </>
     // <div>

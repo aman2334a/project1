@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 import { faCoffee, faFacebook, faPhoneSquareAlt } from '@fortawesome/free-solid-svg-icons'
 function Footer() {
   return (
-    <div class="footer">
+    <div class="footer" id="">
       <div class="container">
         <div class="row">
         <div class="col-lg-3 col-sm-3 col-xs-12">
